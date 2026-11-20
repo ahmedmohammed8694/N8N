@@ -1,22 +1,28 @@
 ﻿# n8n Self-Hosted Configuration
 
-My personal n8n Docker deployment configuration.
+Personal n8n Docker deployment.
 
 ## Requirements
 - Docker Desktop
 - Docker Compose
 
-## Start
+## Start n8n
 docker compose up -d
 
-## Stop
+## Stop n8n
 docker compose stop
 
-## Logs
+## Restart n8n
+docker compose restart
+
+## View logs
 docker compose logs -f n8n
 
 ## Dashboard
 http://localhost:5678
 
 ## Security
-Never commit .env files, credentials, encryption keys, or database backups.
+- Never upload .env files.
+- Never upload encryption keys.
+- Never upload credentials or database backups.
+- Keep this repository private.
