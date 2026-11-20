@@ -20,6 +20,7 @@ docker compose logs -f n8n
 
 ## Dashboard
 http://localhost:5678
+https://legendary-zebra-ww4q75j5jg7fg6p5-5678.app.github.dev/
 
 ## Security
 - Never upload .env files.
