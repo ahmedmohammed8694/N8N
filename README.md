@@ -27,11 +27,26 @@ https://legendary-zebra-ww4q75j5jg7fg6p5-5678.app.github.dev/
 This repository runs n8n in Docker. Cloudflare Workers cannot execute this
 Docker Compose deployment.
 
-1. In Cloudflare Zero Trust, create a tunnel and copy its token.
-2. Add the token and public hostname to `.env`:
+1. `docker compose up -d` starts an ephemeral Cloudflare Quick Tunnel.
+2. Find its temporary hostname in the logs:
+
+```bash
+docker compose logs cloudflared
+```
+
+The current Quick Tunnel is:
+`https://boots-oliver-strings-coaches.trycloudflare.com`
+
+For a permanent custom hostname, create a Named Tunnel in Cloudflare Zero
+Trust and replace the `cloudflared` service command with:
+
+```text
+tunnel --no-autoupdate run --token YOUR_TUNNEL_TOKEN
+```
+
+Then set the public hostname in `.env`:
 
 ```dotenv
-CLOUDFLARE_TUNNEL_TOKEN=your-tunnel-token
 N8N_HOST=n8n.example.com
 N8N_PROTOCOL=https
 N8N_EDITOR_BASE_URL=https://n8n.example.com/

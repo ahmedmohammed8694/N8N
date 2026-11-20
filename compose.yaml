@@ -9,10 +9,10 @@
       - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
       - TZ=Asia/Kolkata
       - GENERIC_TIMEZONE=Asia/Kolkata
-      - N8N_HOST=${N8N_HOST:-localhost}
-      - N8N_PROTOCOL=${N8N_PROTOCOL:-http}
-      - N8N_EDITOR_BASE_URL=${N8N_EDITOR_BASE_URL:-http://localhost:5678/}
-      - WEBHOOK_URL=${WEBHOOK_URL:-http://localhost:5678/}
+      - N8N_HOST=${N8N_HOST:-boots-oliver-strings-coaches.trycloudflare.com}
+      - N8N_PROTOCOL=${N8N_PROTOCOL:-https}
+      - N8N_EDITOR_BASE_URL=${N8N_EDITOR_BASE_URL:-https://boots-oliver-strings-coaches.trycloudflare.com/}
+      - WEBHOOK_URL=${WEBHOOK_URL:-https://boots-oliver-strings-coaches.trycloudflare.com/}
       - N8N_PROXY_HOPS=1
       - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE:-false}
     volumes:
@@ -22,9 +22,7 @@
     image: cloudflare/cloudflared:latest
     container_name: cloudflared
     restart: unless-stopped
-    environment:
-      - CLOUDFLARE_TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN:-}
-    command: sh -c 'test -n "$CLOUDFLARE_TUNNEL_TOKEN" && exec cloudflared tunnel --no-autoupdate run --token "$CLOUDFLARE_TUNNEL_TOKEN" || { echo "CLOUDFLARE_TUNNEL_TOKEN is not set" >&2; exit 1; }'
+    command: tunnel --no-autoupdate --url http://n8n:5678
     depends_on:
       - n8n
 
