@@ -9,11 +9,11 @@
       - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
       - TZ=Asia/Kolkata
       - GENERIC_TIMEZONE=Asia/Kolkata
-      - N8N_HOST=${N8N_HOST:-boots-oliver-strings-coaches.trycloudflare.com}
+      - N8N_HOST=${N8N_HOST:-hosting.mdahmed08061994.workers.dev}
       - N8N_PROTOCOL=${N8N_PROTOCOL:-https}
-      - N8N_EDITOR_BASE_URL=${N8N_EDITOR_BASE_URL:-https://boots-oliver-strings-coaches.trycloudflare.com/}
-      - WEBHOOK_URL=${WEBHOOK_URL:-https://boots-oliver-strings-coaches.trycloudflare.com/}
-      - N8N_PROXY_HOPS=1
+      - N8N_EDITOR_BASE_URL=${N8N_EDITOR_BASE_URL:-https://hosting.mdahmed08061994.workers.dev/}
+      - WEBHOOK_URL=${WEBHOOK_URL:-https://hosting.mdahmed08061994.workers.dev/}
+      - N8N_PROXY_HOPS=2
       - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE:-false}
     volumes:
       - n8n_data:/home/node/.n8n

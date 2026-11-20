@@ -1,0 +1,6 @@
+name = "hosting"
+main = "src/worker.js"
+compatibility_date = "2026-11-20"
+
+[vars]
+N8N_ORIGIN = "https://boots-oliver-strings-coaches.trycloudflare.com"

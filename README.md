@@ -37,6 +37,10 @@ docker compose logs cloudflared
 The current Quick Tunnel is:
 `https://boots-oliver-strings-coaches.trycloudflare.com`
 
+The Cloudflare Worker proxy is configured to forward
+`https://hosting.mdahmed08061994.workers.dev/` to that tunnel. The tunnel
+hostname must remain reachable while n8n is running.
+
 For a permanent custom hostname, create a Named Tunnel in Cloudflare Zero
 Trust and replace the `cloudflared` service command with:
 
