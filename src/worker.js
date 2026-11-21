@@ -1,6 +1,6 @@
 export default {
 	async fetch(request, env) {
-		const origin = env.N8N_ORIGIN || "https://boots-oliver-strings-coaches.trycloudflare.com";
+		const origin = env.N8N_ORIGIN || "https://extract-disposition-bargains-jimmy.trycloudflare.com";
 		const publicUrl = new URL(request.url);
 		const upstreamUrl = new URL(origin);
 		upstreamUrl.pathname = publicUrl.pathname;

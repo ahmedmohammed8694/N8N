@@ -35,7 +35,7 @@ docker compose logs cloudflared
 ```
 
 The current Quick Tunnel is:
-`https://boots-oliver-strings-coaches.trycloudflare.com`
+`https://extract-disposition-bargains-jimmy.trycloudflare.com`
 
 The Cloudflare Worker proxy is configured to forward
 `https://hosting.mdahmed08061994.workers.dev/` to that tunnel. The tunnel
