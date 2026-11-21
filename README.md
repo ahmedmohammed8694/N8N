@@ -1,4 +1,4 @@
-﻿# n8n Self-Hosted Configuration
+# n8n Self-Hosted Configuration
 
 Personal n8n Docker deployment.
 
