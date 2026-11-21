@@ -1,51 +1,24 @@
-# n8n Self-Hosted Configuration
+# n8n 24/7 Cloud Architecture
 
-Personal n8n Docker deployment.
+Production deployment for personal n8n automation running 24/7 with zero local machine dependencies.
 
-## Requirements
-- Docker Desktop
-- Docker Compose
+## Architecture
 
-## Start n8n
-docker compose up -d
+- **Public Frontend**: [Cloudflare Worker](https://hosting.mdahmed08061994.workers.dev/) (`hosting.mdahmed08061994.workers.dev`)
+- **Cloud Backend**: Render Web Service (`n8n-jpne.onrender.com`) running official n8n Docker image
+- **Persistent Database**: Cloud PostgreSQL (`n8n-db`) storing all workflows, credentials, and execution logs
 
-## Stop n8n
-docker compose stop
+## 24/7 Cloud Deployment (Render + Cloudflare)
 
-## Restart n8n
-docker compose restart
+The repository includes `render.yaml` pre-configured with memory optimizations for low-resource environments:
+- Node.js max heap: 384MB (`NODE_OPTIONS=--max-old-space-size=384`)
+- Filesystem binary data storage
+- Automated execution history pruning
 
-## View logs
-docker compose logs -f n8n
-
-## Dashboard
-http://localhost:5678
-https://legendary-zebra-ww4q75j5jg7fg6p5-5678.app.github.dev/
-
-## Public hosting with Cloudflare Tunnel
-
-This repository runs n8n in Docker. Cloudflare Workers cannot execute this
-Docker Compose deployment.
-
-1. `docker compose up -d` starts an ephemeral Cloudflare Quick Tunnel.
-2. Find its temporary hostname in the logs:
-
+## Local Development (Optional)
+If running locally with Docker:
 ```bash
-docker compose logs cloudflared
-```
-
-The current Quick Tunnel is:
-`https://extract-disposition-bargains-jimmy.trycloudflare.com`
-
-The Cloudflare Worker proxy is configured to forward
-`https://hosting.mdahmed08061994.workers.dev/` to that tunnel. The tunnel
-hostname must remain reachable while n8n is running.
-
-For a permanent custom hostname, create a Named Tunnel in Cloudflare Zero
-Trust and replace the `cloudflared` service command with:
-
-```text
-tunnel --no-autoupdate run --token YOUR_TUNNEL_TOKEN
+docker compose up -d
 ```
 
 Then set the public hostname in `.env`:
