@@ -7,7 +7,7 @@ export default {
 		upstreamUrl.search = publicUrl.search;
 
 		const headers = new Headers(request.headers);
-		headers.set("Host", publicUrl.host);
+		headers.set("Host", upstreamUrl.host);
 		headers.set("X-Forwarded-Host", publicUrl.host);
 		headers.set("X-Forwarded-Proto", "https");
 		headers.set("X-Forwarded-Port", "443");

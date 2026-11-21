@@ -1,0 +1,13 @@
+{
+  "name": "hosting",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker proxy for n8n",
+  "main": "src/worker.js",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^4.166.0"
+  }
+}
