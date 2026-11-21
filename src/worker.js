@@ -1,6 +1,8 @@
 export default {
 	async fetch(request, env) {
-		const origin = env.N8N_ORIGIN || "https://n8n-jpne.onrender.com";
+		const origin = env.N8N_ORIGIN && !env.N8N_ORIGIN.includes("trycloudflare.com")
+			? env.N8N_ORIGIN
+			: "https://n8n-jpne.onrender.com";
 		const publicUrl = new URL(request.url);
 		const upstreamUrl = new URL(origin);
 		upstreamUrl.pathname = publicUrl.pathname;
