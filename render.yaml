@@ -21,6 +21,16 @@ services:
         value: https
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
+      - key: NODE_OPTIONS
+        value: "--max-old-space-size=384"
+      - key: N8N_DEFAULT_BINARY_DATA_MODE
+        value: "filesystem"
+      - key: EXECUTIONS_DATA_SAVE_ON_SUCCESS
+        value: "none"
+      - key: EXECUTIONS_DATA_PRUNE
+        value: "true"
+      - key: EXECUTIONS_DATA_MAX_AGE
+        value: "48"
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_HOST
@@ -44,8 +54,6 @@ services:
           name: n8n-db
           property: password
       - key: WEBHOOK_URL
-        value: https://hosting.mdahmed08061994.workers.dev/
-      - key: N8N_EDITOR_BASE_URL
         value: https://hosting.mdahmed08061994.workers.dev/
       - key: N8N_SECURE_COOKIE
         value: "false"
