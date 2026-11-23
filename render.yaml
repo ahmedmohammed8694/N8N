@@ -11,6 +11,8 @@ services:
     plan: free
     image:
       url: docker.io/n8nio/n8n:latest
+    domains:
+      - hostingn8n.dpdns.org
     healthCheckPath: /healthz
     envVars:
       - key: PORT
