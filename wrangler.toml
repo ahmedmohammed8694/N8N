@@ -1,4 +1,4 @@
-name = "hosting"
+name = "hostingn8n"
 main = "src/worker.js"
 compatibility_date = "2026-11-20"
 

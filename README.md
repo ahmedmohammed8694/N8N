@@ -4,7 +4,7 @@ Production deployment for personal n8n automation running 24/7 with zero local m
 
 ## Architecture
 
-- **Public Frontend**: [Cloudflare Worker](https://hosting.mdahmed08061994.workers.dev/) (`hosting.mdahmed08061994.workers.dev`)
+- **Public Frontend**: [Cloudflare Worker](https://hostingn8n.mdahmed08061994.workers.dev/) (`hostingn8n.mdahmed08061994.workers.dev`)
 - **Cloud Backend**: Render Web Service (`n8n-jpne.onrender.com`) running official n8n Docker image
 - **Persistent Database**: Cloud PostgreSQL (`n8n-db`) storing all workflows, credentials, and execution logs
 

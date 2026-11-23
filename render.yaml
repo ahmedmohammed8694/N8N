@@ -54,7 +54,7 @@ services:
           name: n8n-db
           property: password
       - key: WEBHOOK_URL
-        value: https://hosting.mdahmed08061994.workers.dev/
+        value: https://hostingn8n.mdahmed08061994.workers.dev/
       - key: N8N_SECURE_COOKIE
         value: "false"
       - key: GENERIC_TIMEZONE
