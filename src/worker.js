@@ -2,17 +2,24 @@ export default {
 	async fetch(request, env) {
 		const publicUrl = new URL(request.url);
 
-		// robots.txt handler to protect n8n from web crawlers
+		// 1. robots.txt handler to disallow web crawlers and indexers
 		if (publicUrl.pathname === "/robots.txt") {
 			return new Response("User-agent: *\nDisallow: /\n", {
 				headers: { "Content-Type": "text/plain" },
 			});
 		}
 
-		const origin = env.N8N_ORIGIN && !env.N8N_ORIGIN.includes("trycloudflare.com")
-			? env.N8N_ORIGIN
-			: "https://n8n-jpne.onrender.com";
+		// 2. Automatically redirect users to the primary custom domain hostingn8n.dpdns.org
+		const targetDomain = "hostingn8n.dpdns.org";
+		if (publicUrl.hostname.includes("workers.dev") && publicUrl.pathname !== "/healthz") {
+			const redirectUrl = new URL(request.url);
+			redirectUrl.hostname = targetDomain;
+			redirectUrl.protocol = "https:";
+			return Response.redirect(redirectUrl.toString(), 301);
+		}
 
+		// 3. Fallback reverse proxy to Render backend
+		const origin = env.N8N_ORIGIN || "https://n8n-jpne.onrender.com";
 		const upstreamUrl = new URL(origin);
 		upstreamUrl.pathname = publicUrl.pathname;
 		upstreamUrl.search = publicUrl.search;
@@ -43,9 +50,7 @@ export default {
 
 	// 24/7 Keep-Alive Cron: Pings the backend every 10 minutes to prevent Render from going to sleep
 	async scheduled(event, env, ctx) {
-		const origin = env.N8N_ORIGIN && !env.N8N_ORIGIN.includes("trycloudflare.com")
-			? env.N8N_ORIGIN
-			: "https://n8n-jpne.onrender.com";
+		const origin = env.N8N_ORIGIN || "https://n8n-jpne.onrender.com";
 		ctx.waitUntil(
 			fetch(`${origin}/healthz`).catch((err) => console.log("Keep-alive ping error:", err))
 		);
