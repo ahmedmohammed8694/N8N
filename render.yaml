@@ -21,6 +21,8 @@ services:
         value: https
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
+      - key: N8N_RUNNERS_GRANT_TOKEN_TTL
+        value: "120"
       - key: NODE_OPTIONS
         value: "--max-old-space-size=384"
       - key: N8N_DEFAULT_BINARY_DATA_MODE
