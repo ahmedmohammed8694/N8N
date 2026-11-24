@@ -48,11 +48,18 @@ export default {
 		}
 	},
 
-	// 24/7 Keep-Alive Cron: Pings the backend every 10 minutes to prevent Render from going to sleep
+	// 24/7 Keep-Alive Cron: Pings the backend every 5 minutes to prevent Render from going to sleep
 	async scheduled(event, env, ctx) {
 		const origin = env.N8N_ORIGIN || "https://n8n-jpne.onrender.com";
+		const targets = ["https://hostingn8n.dpdns.org/healthz", `${origin}/healthz`];
 		ctx.waitUntil(
-			fetch(`${origin}/healthz`).catch((err) => console.log("Keep-alive ping error:", err))
+			Promise.all(
+				targets.map((url) =>
+					fetch(url, { headers: { "User-Agent": "n8n-keepalive-worker" } })
+						.then((res) => console.log(`Keep-alive ${url}: ${res.status}`))
+						.catch((err) => console.log(`Keep-alive ${url} error:`, err))
+				)
+			)
 		);
 	},
 };

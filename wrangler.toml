@@ -6,4 +6,4 @@ compatibility_date = "2026-11-20"
 N8N_ORIGIN = "https://n8n-jpne.onrender.com"
 
 [triggers]
-crons = ["*/10 * * * *"]
+crons = ["*/5 * * * *"]
