@@ -72,7 +72,7 @@ services:
       - key: N8N_ENABLED_MODULES
         value: "instance-ai"
       - key: N8N_INSTANCE_AI_MODEL
-        value: "anthropic/claude-opus-5-5"
+        value: "openrouter/anthropic/claude-sonnet-4"
       - key: N8N_INSTANCE_AI_MODEL_API_KEY
         sync: false
       - key: N8N_INSTANCE_AI_SANDBOX_ENABLED
