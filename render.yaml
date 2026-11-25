@@ -69,3 +69,21 @@ services:
         value: "Asia/Kolkata"
       - key: TZ
         value: "Asia/Kolkata"
+      - key: N8N_ENABLED_MODULES
+        value: "instance-ai"
+      - key: N8N_INSTANCE_AI_MODEL
+        value: "anthropic/claude-opus-5-5"
+      - key: N8N_INSTANCE_AI_MODEL_API_KEY
+        sync: false
+      - key: N8N_INSTANCE_AI_SANDBOX_ENABLED
+        value: "true"
+      - key: N8N_INSTANCE_AI_SANDBOX_PROVIDER
+        value: "daytona"
+      - key: N8N_INSTANCE_AI_SANDBOX_IMAGE
+        value: "daytonaio/sandbox:0.5.3-slim"
+      - key: DAYTONA_API_URL
+        value: "https://app.daytona.io/api"
+      - key: DAYTONA_API_KEY
+        sync: false
+      - key: INSTANCE_AI_BRAVE_SEARCH_API_KEY
+        sync: false
